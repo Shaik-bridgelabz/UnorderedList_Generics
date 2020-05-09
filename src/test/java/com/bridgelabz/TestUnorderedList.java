@@ -158,4 +158,21 @@ public class TestUnorderedList {
         boolean result=unorderedList.isEmpty();
         Assert.assertFalse(result);
     }
+
+    @Test
+    public void given_Non_EmptyList_Should_returnSize() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.add("Hello");
+        unorderedList.add("Bridgelabz");
+        unorderedList.add(25);
+        int result=unorderedList.size();
+        Assert.assertEquals(3,result);
+    }
+
+    @Test
+    public void given_EmptyList_Should_returnSize_asZero() {
+        UnorderedList unorderedList=new UnorderedList();
+        int result=unorderedList.size();
+        Assert.assertEquals(0,result);
+    }
 }
