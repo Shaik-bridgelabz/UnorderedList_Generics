@@ -88,6 +88,13 @@ public class UnorderedList<T extends Comparable> {
         }
     }
 
+    public boolean isEmpty() {
+        if (head == null) {
+            return true;
+        }
+        return false;
+    }
+
     public int size() {
         return size;
     }

@@ -142,4 +142,20 @@ public class TestUnorderedList {
             Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
         }
     }
+
+    @Test
+    public void given_EmptyList_isEmpty_Should_returnTrue() {
+        UnorderedList unorderedList=new UnorderedList();
+        boolean result=unorderedList.isEmpty();
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given_Non_EmptyList_isEmpty_Should_returnFalse() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.add("Hello");
+        unorderedList.add("Bridgelabz");
+        boolean result=unorderedList.isEmpty();
+        Assert.assertFalse(result);
+    }
 }
