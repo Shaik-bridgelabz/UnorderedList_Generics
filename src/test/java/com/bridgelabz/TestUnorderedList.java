@@ -6,7 +6,7 @@ import org.junit.Test;
 public class TestUnorderedList {
 
     @Test
-    public void givenInteger_WhenAdded_Should_Return_Size() {
+    public void givenInteger_WhenAdded_Should_Return_Size() throws UnorderedListException {
         UnorderedList unorderedList=new UnorderedList();
         unorderedList.add(1);
         unorderedList.add(2);
@@ -14,7 +14,7 @@ public class TestUnorderedList {
     }
 
     @Test
-    public void givenString_WhenAdded_Should_Return_Size() {
+    public void givenString_WhenAdded_Should_Return_Size() throws UnorderedListException {
         UnorderedList unorderedList=new UnorderedList();
         unorderedList.add("Shaik");
         unorderedList.add("Mohammed");
@@ -22,12 +22,30 @@ public class TestUnorderedList {
     }
 
     @Test
-    public void givenFloat_WhenAdded_Should_Return_Size() {
+    public void givenFloat_WhenAdded_Should_Return_Size() throws UnorderedListException {
         UnorderedList unorderedList=new UnorderedList();
         unorderedList.add(10.25f);
         unorderedList.add(65.77f);
         Assert.assertEquals(2,unorderedList.size());
     }
 
-}
+    @Test
+    public void givenNullValue_WhenAdded_Should_Throw_NullException() {
+        UnorderedList unorderedList=new UnorderedList();
+        try {
+            unorderedList.add(null);
+        } catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_NULL,e.type);
+        }
+    }
 
+    @Test
+    public void givenEmptyValue_WhenAdded_Should_Throw_EmptyException() {
+        UnorderedList unorderedList=new UnorderedList();
+        try {
+            unorderedList.add("");
+        } catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
+        }
+    }
+}

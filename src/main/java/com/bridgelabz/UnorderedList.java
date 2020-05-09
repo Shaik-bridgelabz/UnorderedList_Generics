@@ -24,7 +24,10 @@ public class UnorderedList<T extends Comparable> {
         size++;
     }
 
-    public void add(T data) {
+    public void add(T data) throws UnorderedListException {
+        try {
+            if(data.equals(""))
+                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY,"Cannot add empty value");
             Node n = new Node(data);
             if (head == null) {
                 head = n;
@@ -37,6 +40,9 @@ public class UnorderedList<T extends Comparable> {
                 node.next = n;
                 size++;
             }
+        } catch (NullPointerException e) {
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
+        }
 
     }
 
