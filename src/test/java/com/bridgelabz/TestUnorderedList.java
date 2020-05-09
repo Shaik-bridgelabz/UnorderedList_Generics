@@ -95,4 +95,51 @@ public class TestUnorderedList {
             Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
         }
     }
+
+    @Test
+    public void givenInteger_WhenSearched_Should_Return_True() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.add(1);
+        unorderedList.add(2);
+        boolean result=unorderedList.search(1);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenString_WhenSearched_Should_Return_True() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.add("Shaik");
+        unorderedList.add("Mohammed");
+        boolean result=unorderedList.search("Shaik");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenFloat_WhenSearched_Should_Return_True() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.add((Float)10.25f);
+        unorderedList.add((Float)65.77f);
+        boolean result=unorderedList.search((Float)10.25f);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenNullValue_WhenSearched_Should_Throw_NullException() {
+        UnorderedList unorderedList=new UnorderedList();
+        try {
+            unorderedList.remove(null);
+        } catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_NULL,e.type);
+        }
+    }
+
+    @Test
+    public void givenEmptyValue_WhenSearched_Should_Throw_EmptyException() {
+        UnorderedList unorderedList=new UnorderedList();
+        try {
+            unorderedList.remove("");
+        } catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
+        }
+    }
 }

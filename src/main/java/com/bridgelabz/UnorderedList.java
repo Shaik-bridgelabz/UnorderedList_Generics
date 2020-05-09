@@ -71,6 +71,22 @@ public class UnorderedList<T extends Comparable> {
         }
     }
 
+    public boolean search(T data) throws UnorderedListException {
+        try {
+            if (data.equals(""))
+                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY, "Cannot Delete empty value");
+            Node n = head;
+            while (n.next != null) {
+                if (n.data.equals(data)) {
+                    return true;
+                }
+                n = n.next;
+            }
+            return false;
+        } catch (NullPointerException e) {
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
+        }
+    }
 
     public int size() {
         return size;
