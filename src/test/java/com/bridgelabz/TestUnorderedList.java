@@ -287,4 +287,14 @@ public class TestUnorderedList {
             Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_WRONG_POS,e.type);
         }
     }
+
+    @Test
+    public void givenNonEmptyList_should_return_allElements() throws UnorderedListException {
+        UnorderedList unorderedList = new UnorderedList();
+        unorderedList.add(1);
+        unorderedList.add(20);
+        unorderedList.add(2);
+        unorderedList.add("Shaik");
+        unorderedList.show();
+    }
 }

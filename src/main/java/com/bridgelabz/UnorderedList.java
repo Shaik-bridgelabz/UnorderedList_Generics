@@ -202,4 +202,22 @@ public class UnorderedList<T extends Comparable> {
         size -= 1;
         return n.data;
     }
+
+    @Override
+    public String toString() {
+        StringBuffer s = new StringBuffer();
+        s.append("[ ");
+        Node node = head;
+        while (node != null) {
+            s.append(node.data);
+            node = node.next;
+            s.append(",");
+        }
+        s.append(" ]");
+        return s.toString();
+    }
+
+    public void show() {
+        System.out.println(toString());
+    }
 }
