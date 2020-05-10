@@ -3,6 +3,8 @@ package com.bridgelabz;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+
 public class TestUnorderedList {
 
     @Test
@@ -229,5 +231,17 @@ public class TestUnorderedList {
         } catch (UnorderedListException e) {
             Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
         }
+    }
+
+    @Test
+    public void givenValue_WhenInseted_AtPosition_ShouldInsert_And_Return_IndexValue() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.add("Welcome");
+        unorderedList.add("to");
+        unorderedList.add("Bridgelabz");
+        unorderedList.add("Shaik");
+        unorderedList.add("Mohammed");
+        unorderedList.insert(0,"Hello");
+        Assert.assertEquals(0,unorderedList.index("Hello"));
     }
 }

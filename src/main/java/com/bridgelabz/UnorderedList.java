@@ -139,4 +139,24 @@ public class UnorderedList<T extends Comparable> {
             throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
         }
     }
+
+    public  <T extends Comparable> void insert(int pos, T item) throws IndexOutOfBoundsException {
+        if (pos > size || pos < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        int index = 0;
+        Node n = head;
+        Node node = new Node(item);
+        if (pos == 0) {
+            node.next = head;
+            head = node;
+        } else {
+            while (index != pos) {
+                n = n.next;
+            }
+            node.next = n.next;
+            n.next = node;
+        }
+        size++;
+    }
 }
