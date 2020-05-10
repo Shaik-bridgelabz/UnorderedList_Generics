@@ -6,3 +6,7 @@ settings.gradle
 .gradle
 .Idea
 build/
+'[ 1,2,3,4,Shaik,Mohammed, ]'
+'[ Shaik,1,2,3,4,Mohammed, ]'
+'[ Mohammed, ]'
+1,2,3,4,Shaik,Mohammed 
