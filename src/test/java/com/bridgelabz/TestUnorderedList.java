@@ -297,4 +297,19 @@ public class TestUnorderedList {
         unorderedList.add("Shaik");
         unorderedList.show();
     }
+
+    @Test
+    public void givenWord_IfFound_shouldReturn_deleted() throws UnorderedListException {
+        FileReadUnordered fileReadUnordered=new FileReadUnordered();
+        String result=fileReadUnordered.fileReadWrite("Shaik");
+        Assert.assertEquals("found and deleted",result);
+    }
+
+    @Test
+    public void givenWord_IfNotFound_shouldReturn_added() throws UnorderedListException {
+        FileReadUnordered fileReadUnordered=new FileReadUnordered();
+        String result=fileReadUnordered.fileReadWrite("Bridgelabz");
+        Assert.assertEquals("added and saved",result);
+    }
+
 }

@@ -10,7 +10,6 @@ public class UnorderedList<T extends Comparable> {
         Node(T data) {
             this.data = data;
         }
-
     }
 
     private Node head;
