@@ -264,4 +264,27 @@ public class TestUnorderedList {
             Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
         }
     }
+
+    @Test
+    public void givenNonEmptyList_remove_and_return_element_atGivenPosition() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.add(1);
+        unorderedList.add(20);
+        unorderedList.add(2);
+        int result= (int) unorderedList.pop(1);
+        Assert.assertEquals(20,result);
+    }
+
+    @Test
+    public void givenNonEmptyList_PositionGiven_isGreaterthan_SizeofList_shouldthrow_Exception() throws UnorderedListException {
+        UnorderedList unorderedList = new UnorderedList();
+        unorderedList.add(1);
+        unorderedList.add(20);
+        unorderedList.add(2);
+        try {
+            unorderedList.pop(4);
+        }catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_WRONG_POS,e.type);
+        }
+    }
 }

@@ -181,4 +181,25 @@ public class UnorderedList<T extends Comparable> {
             throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL, "Cannot pop Null Value");
         }
     }
+
+    public Comparable pop(int pos) throws UnorderedListException {
+        if(pos>size)
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_WRONG_POS, "Pos must be less than list size");
+        int index = 0;
+        Node n = head;
+        if (pos == 0) {
+            head = head.next;
+            size--;
+            return n.data;
+        }
+        Node prev = null;
+        while (index != pos) {
+            prev = n;
+            n = n.next;
+            index++;
+        }
+        prev.next = n.next;
+        size -= 1;
+        return n.data;
+    }
 }

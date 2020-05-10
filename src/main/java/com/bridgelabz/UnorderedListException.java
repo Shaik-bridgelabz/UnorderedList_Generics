@@ -3,7 +3,7 @@ package com.bridgelabz;
 public class UnorderedListException extends Throwable {
 
     enum ExceptionType {
-        ENTERED_NULL,ENTERED_EMPTY;
+        ENTERED_NULL,ENTERED_EMPTY,ENTERED_WRONG_POS;
     }
     ExceptionType type;
 
