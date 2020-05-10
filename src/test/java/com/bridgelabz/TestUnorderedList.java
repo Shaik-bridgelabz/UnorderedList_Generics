@@ -244,4 +244,24 @@ public class TestUnorderedList {
         unorderedList.insert(0,"Hello");
         Assert.assertEquals(0,unorderedList.index("Hello"));
     }
+
+    @Test
+    public void givenNonEmptyList_remove_and_return_lastElement() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.add(1);
+        unorderedList.add(2);
+        unorderedList.add(3);
+        int result= (int) unorderedList.pop();
+        Assert.assertEquals(3,result);
+    }
+
+    @Test
+    public void givenEmptyList_Pop_ShouldTrow_Exception() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        try {
+            unorderedList.pop();
+        } catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
+        }
+    }
 }

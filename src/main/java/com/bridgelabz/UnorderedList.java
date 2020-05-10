@@ -7,8 +7,8 @@ public class UnorderedList<T extends Comparable> {
         private T data;
         private T[] data1;
 
-        Node(T data){
-            this.data=data;
+        Node(T data) {
+            this.data = data;
         }
 
     }
@@ -21,15 +21,15 @@ public class UnorderedList<T extends Comparable> {
     }
 
     public UnorderedList(T data) {
-        head=new Node(data);
-        head.next=tail;
+        head = new Node(data);
+        head.next = tail;
         size++;
     }
 
     public void add(T data) throws UnorderedListException {
         try {
-            if(data.equals(""))
-                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY,"Cannot add empty value");
+            if (data.equals(""))
+                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY, "Cannot add empty value");
             Node n = new Node(data);
             if (head == null) {
                 head = n;
@@ -43,15 +43,15 @@ public class UnorderedList<T extends Comparable> {
                 size++;
             }
         } catch (NullPointerException e) {
-            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL, "Cannot add Null Value");
         }
 
     }
 
     public void remove(T data) throws UnorderedListException {
         try {
-            if(data.equals(""))
-                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY,"Cannot Delete empty value");
+            if (data.equals(""))
+                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY, "Cannot Delete empty value");
 
             Node n = head;
             Node prev = null;
@@ -69,7 +69,7 @@ public class UnorderedList<T extends Comparable> {
             n = null;
             size -= 1;
         } catch (NullPointerException e) {
-            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot Delete Null Value");
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL, "Cannot Delete Null Value");
         }
     }
 
@@ -86,7 +86,7 @@ public class UnorderedList<T extends Comparable> {
             }
             return false;
         } catch (NullPointerException e) {
-            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL, "Cannot add Null Value");
         }
     }
 
@@ -103,9 +103,9 @@ public class UnorderedList<T extends Comparable> {
 
     public void append(T... data) throws UnorderedListException {
         try {
-            if(data.equals(""))
-                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY,"Cannot add empty value");
-            for(int i=0;i<data.length;i++) {
+            if (data.equals(""))
+                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY, "Cannot add empty value");
+            for (int i = 0; i < data.length; i++) {
                 Node n = new Node(data[i]);
                 if (head == null) {
                     head = n;
@@ -120,27 +120,27 @@ public class UnorderedList<T extends Comparable> {
                 }
             }
         } catch (NullPointerException e) {
-            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL, "Cannot add Null Value");
         }
     }
 
     public int index(T item) throws UnorderedListException {
         try {
-            if(item.equals(""))
-                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY,"Cannot add empty value");
-        int index = 0;
-        Node n = head;
-        while (!n.data.equals(item)) {
-            n = n.next;
-            index++;
-        }
-        return index;
+            if (item.equals(""))
+                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY, "Cannot add empty value");
+            int index = 0;
+            Node n = head;
+            while (!n.data.equals(item)) {
+                n = n.next;
+                index++;
+            }
+            return index;
         } catch (NullPointerException e) {
-            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL, "Cannot add Null Value");
         }
     }
 
-    public  <T extends Comparable> void insert(int pos, T item) throws IndexOutOfBoundsException {
+    public <T extends Comparable> void insert(int pos, T item) throws IndexOutOfBoundsException {
         if (pos > size || pos < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -158,5 +158,27 @@ public class UnorderedList<T extends Comparable> {
             n.next = node;
         }
         size++;
+    }
+
+    public T pop() throws UnorderedListException {
+        try {
+            if (size == 0)
+                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY, "Cannot pop empty list");
+            Node n = head;
+            if (size == 1) {
+                head = head.next;
+                size--;
+                return (T) n.data;
+            }
+            while (n.next != null) {
+                n = n.next;
+            }
+            T ret = (T) n.data;
+            n = n.next;
+            size -= 1;
+            return ret;
+        } catch (NullPointerException e) {
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL, "Cannot pop Null Value");
+        }
     }
 }
