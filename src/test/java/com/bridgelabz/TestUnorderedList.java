@@ -175,4 +175,31 @@ public class TestUnorderedList {
         int result=unorderedList.size();
         Assert.assertEquals(0,result);
     }
+
+    @Test
+    public void given_N_numberOfItems_shouldAppendToList() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.append("Hello","Shaik",1);
+        Assert.assertEquals(3,unorderedList.size());
+    }
+
+    @Test
+    public void givenNullValue_WhenAppended_should_throw_NullException() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        try {
+            unorderedList.append(null);
+        } catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_NULL,e.type);
+        }
+    }
+
+    @Test
+    public void givenEmptyValue_WhenAppeded_Should_Throw_EmptyException() {
+        UnorderedList unorderedList=new UnorderedList();
+        try {
+            unorderedList.append("");
+        } catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
+        }
+    }
 }

@@ -5,10 +5,12 @@ public class UnorderedList<T extends Comparable> {
     class Node<T extends Comparable> {
         private Node next;
         private T data;
+        private T[] data1;
 
         Node(T data){
             this.data=data;
         }
+
     }
 
     private Node head;
@@ -99,4 +101,26 @@ public class UnorderedList<T extends Comparable> {
         return size;
     }
 
+    public void append(T... data) throws UnorderedListException {
+        try {
+            if(data.equals(""))
+                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY,"Cannot add empty value");
+            for(int i=0;i<data.length;i++) {
+                Node n = new Node(data[i]);
+                if (head == null) {
+                    head = n;
+                    size++;
+                } else {
+                    Node node = head;
+                    while (node.next != null) {
+                        node = node.next;
+                    }
+                    node.next = n;
+                    size++;
+                }
+            }
+        } catch (NullPointerException e) {
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
+        }
+    }
 }
