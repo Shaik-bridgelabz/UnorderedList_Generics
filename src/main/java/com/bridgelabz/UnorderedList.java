@@ -123,4 +123,20 @@ public class UnorderedList<T extends Comparable> {
             throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
         }
     }
+
+    public int index(T item) throws UnorderedListException {
+        try {
+            if(item.equals(""))
+                throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_EMPTY,"Cannot add empty value");
+        int index = 0;
+        Node n = head;
+        while (!n.data.equals(item)) {
+            n = n.next;
+            index++;
+        }
+        return index;
+        } catch (NullPointerException e) {
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_NULL,"Cannot add Null Value");
+        }
+    }
 }

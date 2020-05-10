@@ -202,4 +202,32 @@ public class TestUnorderedList {
             Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
         }
     }
+
+    @Test
+    public void givenValue_Whenpassed_TosearchIndex_Should_Return_IndexValue() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        unorderedList.add("Hello");
+        unorderedList.add("Shaik");
+        Assert.assertEquals(1,unorderedList.index("Shaik"));
+    }
+
+    @Test
+    public void givenNullValue_Whenpassed_TosearchIndex_should_throw_NullException() throws UnorderedListException {
+        UnorderedList unorderedList=new UnorderedList();
+        try {
+            unorderedList.append(null);
+        } catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_NULL,e.type);
+        }
+    }
+
+    @Test
+    public void givenEmptyValue_Whenpassed_TosearchIndex_Should_Throw_EmptyException() {
+        UnorderedList unorderedList=new UnorderedList();
+        try {
+            unorderedList.append("");
+        } catch (UnorderedListException e) {
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_EMPTY,e.type);
+        }
+    }
 }
