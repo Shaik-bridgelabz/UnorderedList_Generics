@@ -3,8 +3,6 @@ package com.bridgelabz;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
-
 public class TestUnorderedList {
 
     @Test
@@ -284,7 +282,7 @@ public class TestUnorderedList {
         try {
             unorderedList.pop(4);
         }catch (UnorderedListException e) {
-            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_WRONG_POS,e.type);
+            Assert.assertEquals(UnorderedListException.ExceptionType.ENTERED_WRONG_POSITION,e.type);
         }
     }
 

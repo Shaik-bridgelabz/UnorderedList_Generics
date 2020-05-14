@@ -139,18 +139,18 @@ public class UnorderedList<T extends Comparable> {
         }
     }
 
-    public <T extends Comparable> void insert(int pos, T item) throws IndexOutOfBoundsException {
-        if (pos > size || pos < 0) {
+    public <T extends Comparable> void insert(int position, T item) throws IndexOutOfBoundsException {
+        if (position > size || position < 0) {
             throw new IndexOutOfBoundsException();
         }
         int index = 0;
         Node n = head;
         Node node = new Node(item);
-        if (pos == 0) {
+        if (position == 0) {
             node.next = head;
             head = node;
         } else {
-            while (index != pos) {
+            while (index != position) {
                 n = n.next;
             }
             node.next = n.next;
@@ -181,24 +181,25 @@ public class UnorderedList<T extends Comparable> {
         }
     }
 
-    public Comparable pop(int pos) throws UnorderedListException {
-        if(pos>size)
-            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_WRONG_POS, "Pos must be less than list size");
+    public Comparable pop(int position) throws UnorderedListException {
+        if(position>size)
+            throw new UnorderedListException(UnorderedListException.ExceptionType.ENTERED_WRONG_POSITION, "Position must be less than list size");
         int index = 0;
         Node n = head;
-        if (pos == 0) {
+        if (position == 0) {
             head = head.next;
             size--;
             return n.data;
         }
         Node prev = null;
-        while (index != pos) {
+        while (index != position) {
             prev = n;
             n = n.next;
             index++;
         }
         prev.next = n.next;
         size -= 1;
+        
         return n.data;
     }
 
